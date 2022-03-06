@@ -13,7 +13,7 @@ let isWrongClicked = false;
 
 //get Data from API
 const getCountryData = async () => {
-  const response = await fetch(`https://restcountries.eu/rest/v2/all`);
+  const response = await fetch(`https://restcountries.com/v3.1/all`);
   const data = await response.json();
   return data;
 };
@@ -66,10 +66,10 @@ const displayNewData = (data) => {
     questionFlag.classList.add("show");
     countryFlag.classList.add("show");
     question.classList.add("hide");
-    countryFlag.children[0].src = `${correct.flag}`;
+    countryFlag.children[0].src = `${correct.flags.svg}`;
   }
   variantBtn.forEach((btn, index) => {
-    btn.children[1].innerHTML = data[index].name;
+    btn.children[1].innerHTML = data[index].name.common;
     if (index === indexOfCorrect) {
       btn.children[1].setAttribute("correct", `${correct.name}`);
       btn.children[2].children[0].src = `./img/check_circle_white_18dp.svg`;
